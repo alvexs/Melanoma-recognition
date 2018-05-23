@@ -1,0 +1,411 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BeHealthy</title>
+<script>
+      function ani(){
+          document.getElementById('heart').className ='main-heart-anim';
+          document.getElementById('label1').className = "label222-after";
+          document.getElementById('label1').innerHTML = "Загружаем файл <br> на сервер";
+          document.getElementById("id_file").form.submit();
+          setTimeout(function(){
+              document.getElementById('label1').className = "label222-after";
+              document.getElementById('label1').innerHTML = "Запускаем нейросети";
+          }, 2500);
+          setTimeout(function(){
+              document.getElementById('label1').className = "label222";
+              document.getElementById('label1').innerHTML = "Подбираем коэффициенты";
+          }, 5500);
+          setTimeout(function(){
+              document.getElementById('label1').className = "label222-after";
+              document.getElementById('label1').innerHTML = "Уже почти <br> все готово";
+          }, 7500);
+          setTimeout(function(){
+              document.getElementById('label1').className = "label222-after-next";
+              document.getElementById('label1').innerHTML = "Ещё чуть-чуть";
+          }, 9500);
+  }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Comfortaa');
+    @keyframes pound {
+        0% {
+            transform: scale(1);
+
+        }
+        50% {
+            transform: scale(1.22);
+
+        }
+        100% {
+            transform: scale(1);
+        }
+        }
+    @keyframes blink {
+        0%, 20% {
+            color: rgba(0,0,0,0);
+            text-shadow:
+              .25em 0 0 rgba(0,0,0,0),
+              .5em 0 0 rgba(0,0,0,0);}
+        40% {
+            color: black;
+            text-shadow:
+              .25em 0 0 rgba(0,0,0,0),
+              .5em 0 0 rgba(0,0,0,0);}
+        60% {
+            text-shadow:
+              .25em 0 0 black,
+              .5em 0 0 rgba(0,0,0,0);}
+        80%, 100% {
+            text-shadow:
+              .25em 0 0 black,
+              .5em 0 0 black;}}
+
+    @keyframes rot {
+      0% {
+
+        transform: rotate(0deg);
+
+      }
+      50% {
+
+        transform: rotate(180deg);
+        }
+      100% {
+
+        transform: rotate(360deg);
+
+      }
+    }
+    .to-auth {
+        color: blueviolet;
+        text-decoration: underline;
+    }
+    .label-auth {
+        position: absolute;
+        z-index: 400;
+        margin-left: calc(100vw/2 + 22vh/2 + 1px);
+        margin-top: calc(100vh/2 - 8vh/2);
+        width: 30vh;
+        height: 12vh;
+        font-size: calc(14vh/5);
+        font-family: 'Comfortaa', sans-serif;
+    }
+    .label222-after:after {
+        content: ' .';
+        animation: blink 1s steps(5, end) infinite;
+        font-size: calc(4vh);
+    }
+
+
+    .inputfiles {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    .label222 {
+        position: absolute;
+        z-index: 400;
+        margin-left: calc(100vw/2 + 20vh/2 + 1px);
+        margin-top: calc(100vh/2 - 6vh/2);
+        width: 30vh;
+        height: 12vh;
+        font-size: calc(14vh/5);
+        font-family: 'Comfortaa', sans-serif;
+
+    }
+    .label222-after {
+        position: absolute;
+        z-index: 400;
+        margin-left: calc(100vw/2 + 20vh/2 + 1px);
+        margin-top: calc(100vh/2 - 6vh/2);
+        width: 30vh;
+        height: 12vh;
+        font-size: calc(13.5vh/5);
+        font-family: 'Comfortaa', sans-serif;
+
+    }
+
+    .label222-after-next {
+        position: absolute;
+        z-index: 400;
+        margin-left: calc(100vw/2 + 20vh/2);
+        margin-top: calc(100vh/2 - 3vh/2);
+        width: 30vh;
+        height: 12vh;
+        font-size: calc(14vh/5);
+        font-family: 'Comfortaa', sans-serif;
+
+    }
+
+
+    .main-heart {
+        z-index: 500;
+        opacity: 1;
+        position: absolute;
+        /*animation: pound 0.85s linear  infinite;*/
+        height: 11vh;
+        width: 11vh;
+        border-radius: 30%;
+        background-position: center;
+        background-size: cover;
+        background-image: url({% static "heart-logo.jpg" %});
+
+    }
+    .main-heart-anim {
+        z-index: 500;
+        opacity: 1;
+        position: absolute;
+        /*animation: pound 1s linear  infinite;*/
+        height: 11vh;
+        width: 11vh;
+        border-radius: 30%;
+        background-position: center;
+        background-size: cover;
+        background-image: url({% static "heart-logo.jpg" %});
+        animation: pound 0.85s linear infinite;
+
+    }
+
+    body {
+        margin: 0;
+
+        width: 100%;
+
+        background-color: #fff3f3;
+    }
+    .cover {
+        position: absolute;
+
+        height: 100vh;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        background-image: url({% static "cover.jpg" %});
+
+    }
+    .sss {
+        height: 11vh;
+        width: 11vh;
+        margin-left: calc(100vw/2 - 11vh/2);
+        margin-top:calc(100vh/2 - 11vh/2 + 11vh/19);
+        position: absolute;
+    }
+    .input-all {
+
+        position: absolute;
+        width: 70vh;
+        height: 70vh;
+        margin-left: calc(100vw/2 - 70vh/2);
+        margin-top: calc(100vh/2 - 70vh/2);
+    }
+    .input-back{
+        height: 100%;
+        width: 100%;
+        display: block;
+        position: absolute;
+        z-index: 300;
+        border-radius: 50%;
+        background-position: center;
+        background-size: cover;
+        background-image: url({% static "input3.jpg" %});
+        animation: rot 30s linear infinite;
+
+    }
+    .header-full {
+        position: absolute;
+        padding: 10px;
+        overflow: hidden;
+        opacity: 0.4;
+    }
+
+    .header-logo {
+        color:blueviolet;
+        position: absolute;
+        width: 14.8vw;
+        height: 4vh;
+        margin-top: 3vh;
+        padding-bottom: 1vh;
+        margin-left: calc(100vw/2 - 20.8vw/2);
+        padding-left: 3vw;
+        padding-right: 3vw;
+        border-bottom: 2px solid;
+        border-bottom-color: blueviolet;
+        font-size: 2.07vw;
+        font-family: 'Comfortaa', sans-serif;
+    }
+    .auth {
+        position: absolute;
+        width: 6vw;
+        height: 3vh;
+        margin-top: 4vh;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        margin-left: calc(100vw*4/5 - 11vh/2);
+        padding-bottom: 1vh;
+        color:blueviolet;
+        font-size: 1.67vw;
+        border-bottom: 2px solid;
+        border-bottom-color: blueviolet;
+        font-family: 'Comfortaa', sans-serif;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .auth2 {
+        position: absolute;
+        width: 6vw;
+        height: 3vh;
+        margin-top: 4vh;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        margin-left: calc(100vw*4/5 - 11vh/2);
+        padding-bottom: 1vh;
+        color:blueviolet;
+        font-size: 1.67vw;
+        border-bottom: 2px solid;
+        border-bottom-color: blueviolet;
+        font-family: 'Comfortaa', sans-serif;
+    }
+    .auth:hover {
+        border-width: 0;
+        overflow: visible;
+    }
+    .back-header {
+        height: 8.1vh;
+        width: 100%;
+        opacity: 0.8;
+        position: absolute;
+        background-color: white;
+    }
+    .footer-text {
+        position: absolute;
+        width: 25vw;
+        height: 3vh;
+        margin-top: 94.5vh;
+
+        margin-left: calc(100vw*3/4 - 15vh/2);
+        color:blueviolet;
+        font-size: 1vw;
+        font-family: 'Comfortaa', sans-serif;
+    }
+    .back-footer {
+        margin-top: 91.9vh;
+        height: 8.1vh;
+        width: 100%;
+        opacity: 0.8;
+        position: absolute;
+        background-color: white;
+
+    }
+    .back-border {
+        height: 50px;
+
+        width: 100%;
+
+        border-bottom: 2px solid;
+        border-bottom-color: blueviolet;
+        position: absolute;
+
+    }
+    .text {
+        z-index: 400;
+
+        color: blueviolet;
+    }
+    a {
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .menu {
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 100%;
+        padding-top: 1vh;
+    }
+    .menu-li {
+        padding-left: 0.5vw;
+        width: 100%;
+        padding-top: 2vh;
+    }
+    .menu-li:last-child{
+        padding-bottom: 10px;
+    }
+    ul {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+
+        font-size: 2vh;
+        font-family: Comfortaa;
+        list-style-type: none;
+        color: rgba(255,90,90);
+    }
+    .footer-text {
+        position: absolute;
+        width: 25vw;
+        height: 3vh;
+        margin-top: 94.5vh;
+        margin-left: calc(100vw*3/4 - 10vh/2);
+        color:blueviolet;
+        font-size: 1vw;
+        font-family: 'Comfortaa', sans-serif;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="cover">
+    <div class="back-header"></div>
+    <a class='header-logo' href="/">Будь Здоров!</a>
+    {% if user.is_authenticated %}
+    <div class="auth">
+        <a class="auth-ref">{{ user.get_username }}</a>
+        <ul class="menu">
+            <li class="menu-li"><a href="{% url 'result_list' user.username %}" style="color: blueviolet;">Посмотреть результаты</a></li>
+            <li class="menu-li"><a href="{% url 'logout' %}" style="color: blueviolet;">Выход</a></li>
+        </ul>
+    </div>
+    {% else %}
+        <a class="auth2" href="/login">Войти</a>
+    {% endif %}
+    <div class="back-footer"></div>
+    <div class="footer-text">Разработал Иванников Александр</div>
+</div>
+{{ form.non_field_errors }}
+ {% if user.is_authenticated %}
+    <form class="input-all" action="/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div>{{ form.file }}</div>
+
+        <label for="id_file"><div class='input-back'></div></label>
+
+    </form>
+
+
+
+<div class="sss">
+    <label for="id_file"><div class='main-heart' id='heart'></div></label>
+</div>
+    <label for="id_file" id='label1' class='label222'>Нажмите <text class="text">тут</text> <br>для начала</label>
+ {% else %}
+
+     <form class="input-all" action="/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>{{ form.file }}</div>
+        <label onclick="check()"><div class='input-back'></div></label>
+    </form>
+    <div class="sss">
+        <label onclick="check()"><div class='main-heart' id='heart'></div></label>
+    </div>
+    <label onclick="check()" id='label1' class='label222'>Пожалуйста, <a class="to-auth" href="/login">войдите</a> <br> в систему</label>
+
+ {% endif %}
+</body>
+</html>
