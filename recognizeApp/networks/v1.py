@@ -52,7 +52,7 @@ def recognize(target):
     model = create_model()
 
     #loading weights
-    model.load_weights('/Users/alexivannikov/recognizeMelanoma/recognizeApp/networks/weights_new1.h5')
+    model.load_weights('/Users/alexivannikov/recognizeMelanoma/recognizeApp/networks/weights_new.h5')
 
 
     if os.path.isfile(target):
